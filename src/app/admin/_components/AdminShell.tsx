@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { LogOut, LayoutDashboard, CalendarCheck, BedDouble, ExternalLink } from 'lucide-react';
+import { LogOut, LayoutDashboard, CalendarCheck, BedDouble, ExternalLink, Ship } from 'lucide-react';
 
-type ActiveKey = 'home' | 'reservations' | 'hotels';
+type ActiveKey = 'home' | 'reservations' | 'hotels' | 'tours';
 
 export function AdminShell({
   active,
@@ -13,6 +13,7 @@ export function AdminShell({
   const nav: { key: ActiveKey; label: string; href: string; Icon: typeof LayoutDashboard }[] = [
     { key: 'home', label: 'Dashboard', href: '/admin', Icon: LayoutDashboard },
     { key: 'reservations', label: 'Reservations', href: '/admin/reservations', Icon: CalendarCheck },
+    { key: 'tours', label: 'Tours', href: '/admin/tours', Icon: Ship },
     { key: 'hotels', label: 'Hotels', href: '/admin/hotels', Icon: BedDouble },
   ];
   return (

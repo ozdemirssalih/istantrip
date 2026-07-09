@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ImageUpload } from '../_components/ImageUpload';
 
 type Hotel = {
   id?: string;
@@ -60,10 +61,14 @@ export function HotelForm({
           <option value="GBP">GBP</option>
         </select>
       </label>
-      <label className="text-sm md:col-span-2">
-        <span className="block mb-2 text-cream/80">Cover image URL (Unsplash / any)</span>
-        <input name="cover_url" defaultValue={hotel?.cover_url ?? ''} placeholder="https://images.unsplash.com/..." />
-      </label>
+      <div className="md:col-span-2">
+        <ImageUpload
+          name="cover_url"
+          defaultValue={hotel?.cover_url ?? ''}
+          scope="hotels"
+          label="Cover image (upload or paste URL)"
+        />
+      </div>
       <label className="text-sm md:col-span-2">
         <span className="block mb-2 text-cream/80">Booking URL (optional)</span>
         <input name="booking_url" defaultValue={hotel?.booking_url ?? ''} />
