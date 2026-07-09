@@ -25,6 +25,7 @@ export default async function HomePage({ params }: PageProps<'/[lang]'>) {
       <div className="-mt-24">
         <Hero dict={dict} />
       </div>
+      {/* video-only hero above; no scroll spacer needed */}
       <Marquee />
       <TrustBar dict={dict} />
       <Services dict={dict} locale={lang} />
