@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "title": "Istantrip — İstanbul'un Ruhunu Yaşayın",
+    "description": "Boğaz turları, şehir turları, otel rezervasyonu ve VIP havalimanı transferi. İstanbul'un kalbinden özel deneyimler."
+  },
+  "nav": {
+    "home": "Anasayfa",
+    "tours": "Turlar",
+    "hotels": "Oteller",
+    "transfer": "Transfer",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "reserve": "Rezervasyon"
+  },
+  "hero": {
+    "eyebrow": "İstanbul'un kalbinden",
+    "title": "Şehri sadece görme, yaşa.",
+    "subtitle": "Ayasofya'dan Galata'ya, Balat'tan Kuzguncuk'a — yerel tutkuyla hazırlanmış özel turlar.",
+    "cta": "Rezervasyon Yap",
+    "scroll": "Kaydırın"
+  },
+  "services": {
+    "sectionTitle": "Hizmetlerimiz",
+    "sectionSubtitle": "İstanbul deneyiminizi tamamlayan dört ayrı hizmet.",
+    "bosphorus": {
+      "title": "Boğaz Turları",
+      "desc": "Özel yatlarla gün batımı turları, klasik teknelerle Boğaz keşfi ve otantik köy duraklarıyla eşsiz manzaralar."
+    },
+    "city": {
+      "title": "Şehir Turları",
+      "desc": "Tarihi Yarımada, Galata, Balat ve Kadıköy'de uzman rehberler eşliğinde şehrin hikâyesini dinleyin."
+    },
+    "hotel": {
+      "title": "Otel Rezervasyonları",
+      "desc": "Butik ve lüks otellerle iş birliğimiz sayesinde konforlu, konumlu ve özel konaklama seçenekleri."
+    },
+    "transfer": {
+      "title": "Havalimanı Transfer & VIP",
+      "desc": "Konforlu araçlar ve profesyonel şoförlerle sorunsuz karşılama ve şehir içi transfer."
+    }
+  },
+  "reservation": {
+    "sectionTitle": "Rezervasyon",
+    "sectionSubtitle": "Bize sizin için en uygun olanı söyleyin, kısa sürede dönelim.",
+    "fields": {
+      "name": "Ad Soyad",
+      "email": "E-posta",
+      "phone": "Telefon",
+      "service": "Hizmet",
+      "date": "Tarih",
+      "guests": "Kişi Sayısı",
+      "notes": "Notlar"
+    },
+    "serviceOptions": {
+      "bosphorus": "Boğaz Turu",
+      "city": "Şehir Turu",
+      "hotel": "Otel Rezervasyonu",
+      "transfer": "VIP Transfer"
+    },
+    "submit": "Rezervasyon İsteği Gönder",
+    "success": "Talebiniz alındı. En kısa sürede dönüş yapacağız.",
+    "error": "Bir sorun oluştu. Lütfen tekrar deneyin."
+  },
+  "testimonials": {
+    "sectionTitle": "Misafirlerimiz",
+    "items": [
+      { "quote": "Sadece bir tur değil, gerçek bir İstanbul deneyimiydi. Rehberimizin şehre olan sevgisi her ayrıntıda hissediliyordu.", "author": "Elif K." },
+      { "quote": "Havalimanı karşılamasından son gece yat turumuza kadar kusursuz bir organizasyondu.", "author": "Michael R." },
+      { "quote": "Balat sokaklarında geçirdiğimiz o öğleden sonrayı hiç unutmayacağız.", "author": "Yuki T." }
+    ]
+  },
+  "about": {
+    "sectionTitle": "Hakkımızda",
+    "body": "Istantrip, yerel tutkuyla küresel vizyonu buluşturur. Amacımız İstanbul'u yaşayan, hisseden ve anlatan turlar sunmak; tarihi dokusuyla, modern yüzüyle ve gizli güzellikleriyle şehri size açmaktır."
+  },
+  "contact": {
+    "sectionTitle": "İletişim",
+    "phone": "+90 552 228 26 82",
+    "email": "info@istantrip.com",
+    "address": "İstanbul, Türkiye"
+  },
+  "footer": {
+    "tagline": "İstanbul'un ruhunu yaşayın.",
+    "rights": "Tüm hakları saklıdır."
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "meta": {
+    "title": "Istantrip — Live the Soul of Istanbul",
+    "description": "Bosphorus cruises, city tours, hotel reservations and VIP airport transfers. Curated experiences from the heart of Istanbul."
+  },
+  "nav": {
+    "home": "Home",
+    "tours": "Tours",
+    "hotels": "Hotels",
+    "transfer": "Transfer",
+    "about": "About",
+    "contact": "Contact",
+    "reserve": "Reserve"
+  },
+  "hero": {
+    "eyebrow": "From the heart of Istanbul",
+    "title": "Don't just see the city — live it.",
+    "subtitle": "From Hagia Sophia to Galata, Balat to Kuzguncuk — private tours crafted with local passion.",
+    "cta": "Make a Reservation",
+    "scroll": "Scroll"
+  },
+  "services": {
+    "sectionTitle": "Our Services",
+    "sectionSubtitle": "Four services designed to complete your Istanbul journey.",
+    "bosphorus": {
+      "title": "Bosphorus Cruises",
+      "desc": "Sunset cruises on private yachts, classic boat rides along the strait, and authentic village stops with unmatched views."
+    },
+    "city": {
+      "title": "City Tours",
+      "desc": "Walk the Historical Peninsula, Galata, Balat and Kadıköy with expert guides who tell the city's true story."
+    },
+    "hotel": {
+      "title": "Hotel Reservations",
+      "desc": "Comfortable, well-located and exclusive accommodation options through our boutique and luxury hotel partners."
+    },
+    "transfer": {
+      "title": "Airport Transfer & VIP",
+      "desc": "Seamless meet-and-greet and in-city transfers with comfortable vehicles and professional drivers."
+    }
+  },
+  "reservation": {
+    "sectionTitle": "Reservation",
+    "sectionSubtitle": "Tell us what suits you best — we'll be back with you shortly.",
+    "fields": {
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "service": "Service",
+      "date": "Date",
+      "guests": "Guests",
+      "notes": "Notes"
+    },
+    "serviceOptions": {
+      "bosphorus": "Bosphorus Cruise",
+      "city": "City Tour",
+      "hotel": "Hotel Reservation",
+      "transfer": "VIP Transfer"
+    },
+    "submit": "Send Reservation Request",
+    "success": "We received your request. We'll get back to you shortly.",
+    "error": "Something went wrong. Please try again."
+  },
+  "testimonials": {
+    "sectionTitle": "Our Guests",
+    "items": [
+      { "quote": "Not just a tour but a genuine Istanbul experience. Our guide's love for the city showed in every detail.", "author": "Elif K." },
+      { "quote": "From airport pickup to our final yacht night, everything was flawlessly organized.", "author": "Michael R." },
+      { "quote": "We'll never forget that afternoon walking through the streets of Balat.", "author": "Yuki T." }
+    ]
+  },
+  "about": {
+    "sectionTitle": "About",
+    "body": "Istantrip connects local passion with global vision. We craft tours that live, feel and tell Istanbul's story — opening the city's historical texture, modern face and hidden beauty to you."
+  },
+  "contact": {
+    "sectionTitle": "Contact",
+    "phone": "+90 552 228 26 82",
+    "email": "info@istantrip.com",
+    "address": "Istanbul, Türkiye"
+  },
+  "footer": {
+    "tagline": "Live the soul of Istanbul.",
+    "rights": "All rights reserved."
+  }
+}
