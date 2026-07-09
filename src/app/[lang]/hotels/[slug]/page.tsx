@@ -71,12 +71,11 @@ export default async function HotelDetailPage({ params }: PageProps<'/[lang]/hot
           </div>
           <aside className="md:sticky md:top-28 h-fit card-glass rounded-2xl p-6">
             <div className="text-xs uppercase tracking-widest text-[color:var(--gold-soft)] mb-3">
-              {dict.hotels.priceFrom}
+              {dict.reservation.sectionTitle}
             </div>
-            <div className="font-display text-3xl text-cream mb-1">
-              {h.price_from} <span className="text-lg text-cream/60">{h.currency}</span>
-            </div>
-            <div className="text-xs text-cream/60 mb-6">/ {dict.hotels.night}</div>
+            <p className="text-cream/80 text-sm leading-relaxed mb-6">
+              {dict.reservation.sectionSubtitle}
+            </p>
             <Link
               href={`/${lang}/reservation?service=hotel`}
               className="btn-gold w-full py-3 rounded-full text-sm inline-flex items-center justify-center gap-2"
@@ -92,6 +91,11 @@ export default async function HotelDetailPage({ params }: PageProps<'/[lang]/hot
                 {dict.hotels.viewDetails}
               </a>
             )}
+            <div className="mt-6 border-t border-white/5 pt-6 text-xs text-cream/60 space-y-2">
+              <div>{dict.trust.guides}</div>
+              <div>{dict.trust.languages}</div>
+              <div>{dict.contact.hours}</div>
+            </div>
           </aside>
         </div>
       </section>

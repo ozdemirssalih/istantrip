@@ -70,11 +70,7 @@ export function TourCard({ t, dict, locale }: { t: Tour; dict: Dictionary; local
         </div>
         <h3 className="font-display text-xl text-cream">{name}</h3>
         <p className="mt-2 text-cream/70 text-sm line-clamp-3">{desc}</p>
-        <div className="mt-5 flex items-end justify-between">
-          <div className="text-xs text-cream/60">
-            <span className="text-cream/50">{dict.tours.priceFrom}</span>{' '}
-            <span className="text-cream font-medium">{t.price_from} {t.currency}</span>
-          </div>
+        <div className="mt-5 flex items-center justify-end">
           <span className="text-[color:var(--gold-soft)] text-xs inline-flex items-center gap-1">
             {dict.services.learnMore} <ArrowRight size={12} />
           </span>

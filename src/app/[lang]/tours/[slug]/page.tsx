@@ -54,14 +54,6 @@ export default async function TourDetailPage({ params }: PageProps<'/[lang]/tour
                   {tour.duration_hours}{dict.tours.hoursShort}
                 </span>
               )}
-              {tour.price_from && (
-                <span>
-                  <span className="text-cream/50">{dict.tours.priceFrom}</span>{' '}
-                  <span className="text-cream font-medium">
-                    {tour.price_from} {tour.currency}
-                  </span>
-                </span>
-              )}
             </div>
             <div className="divider-gold w-40 mt-8" />
           </div>
@@ -101,10 +93,9 @@ export default async function TourDetailPage({ params }: PageProps<'/[lang]/tour
             <div className="text-xs uppercase tracking-widest text-[color:var(--gold-soft)] mb-3">
               {dict.reservation.sectionTitle}
             </div>
-            <div className="font-display text-3xl text-cream mb-2">
-              {tour.price_from} <span className="text-lg text-cream/60">{tour.currency}</span>
-            </div>
-            <div className="text-xs text-cream/60 mb-6">{dict.tours.priceFrom}</div>
+            <p className="text-cream/80 text-sm leading-relaxed mb-6">
+              {dict.reservation.sectionSubtitle}
+            </p>
             <Link
               href={`/${lang}/reservation?service=${
                 tour.category === 'bosphorus'

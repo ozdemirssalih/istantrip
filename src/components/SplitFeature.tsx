@@ -18,7 +18,7 @@ export function SplitFeature({ dict, locale }: { dict: Dictionary; locale: strin
       align: 'right' as const,
     },
     {
-      image: stock.hero.street,
+      image: stock.hero.balat,
       eyebrow: dict.tours.categoryCity,
       title: dict.services.city.title,
       body: dict.services.city.desc,
@@ -26,7 +26,7 @@ export function SplitFeature({ dict, locale }: { dict: Dictionary; locale: strin
       align: 'left' as const,
     },
     {
-      image: stock.hero.luxury,
+      image: stock.hero.dolmabahce,
       eyebrow: 'Hotels',
       title: dict.services.hotel.title,
       body: dict.services.hotel.desc,

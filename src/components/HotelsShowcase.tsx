@@ -62,12 +62,7 @@ export function HotelCard({ h, dict, locale }: { h: Hotel; dict: Dictionary; loc
         <div className="text-xs uppercase tracking-widest text-[color:var(--gold-soft)] mb-2">{h.district ?? '—'}</div>
         <h3 className="font-display text-xl text-cream">{h.name}</h3>
         <p className="mt-2 text-cream/70 text-sm line-clamp-3">{desc}</p>
-        <div className="mt-4 flex items-end justify-between">
-          <div className="text-xs text-cream/60">
-            <span className="text-cream/50">{dict.hotels.priceFrom}</span>{' '}
-            <span className="text-cream font-medium">{h.price_from} {h.currency}</span>{' '}
-            <span>/ {dict.hotels.night}</span>
-          </div>
+        <div className="mt-5 flex items-center justify-end">
           <span className="text-[color:var(--gold-soft)] text-xs inline-flex items-center gap-1">
             {dict.hotels.viewDetails} <ArrowRight size={12} />
           </span>

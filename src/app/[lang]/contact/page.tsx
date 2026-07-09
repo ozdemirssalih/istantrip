@@ -12,7 +12,7 @@ export default async function ContactPage({ params }: PageProps<'/[lang]/contact
   return (
     <PageShell dict={dict} locale={lang}>
       <PageHero
-        image={stock.hero.tram}
+        image={stock.hero.karakoy}
         eyebrow="Istantrip"
         title={dict.contact.sectionTitle}
         subtitle={dict.contact.hours}
