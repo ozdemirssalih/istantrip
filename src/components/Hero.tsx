@@ -76,7 +76,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
 
         {/* Floating logo mark */}
         <div className="pointer-events-none absolute inset-0">
-          <LogoMark className="absolute top-[8%] end-[3%] hidden md:block w-[440px] h-[440px]" size={360} />
+          <LogoMark className="absolute top-[8%] end-[3%] hidden md:block w-[440px] h-[440px] opacity-40" size={360} />
         </div>
 
         {/* Watermark logo */}

@@ -37,7 +37,7 @@ export default async function ToursPage({
   return (
     <PageShell dict={dict} locale={lang}>
       <PageHero
-        image={stock.hero.bosphorus}
+        image={stock.hero.topkapi}
         eyebrow="Istantrip"
         title={dict.tours.listTitle}
         subtitle={dict.tours.listSubtitle}
