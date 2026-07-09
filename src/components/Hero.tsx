@@ -11,7 +11,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const rafRef = useRef<number | null>(null);
-  const targetTimeRef = useRef(0);
+  const targetTimeRef = useRef<number | null>(null);
   const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
@@ -19,50 +19,65 @@ export function Hero({ dict }: { dict: Dictionary }) {
     const wrap = wrapperRef.current;
     if (!video || !wrap) return;
 
-    let duration = 0;
-
-    const onMeta = () => {
-      duration = Number.isFinite(video.duration) ? video.duration : 0;
-      // Kick a tiny play to force first-frame paint, then immediately pause.
+    // Attempt autoplay — muted so browsers allow it.
+    const kick = () => {
       const p = video.play();
-      if (p && typeof p.then === 'function') {
-        p.then(() => {
-          video.pause();
-          setVideoReady(true);
-        }).catch(() => setVideoReady(true));
-      } else {
-        video.pause();
-        setVideoReady(true);
-      }
+      if (p && typeof p.then === 'function') p.catch(() => {});
     };
-    video.addEventListener('loadedmetadata', onMeta);
+
+    const onCanPlay = () => {
+      setVideoReady(true);
+      kick();
+    };
+    video.addEventListener('canplay', onCanPlay);
     video.addEventListener('loadeddata', () => setVideoReady(true));
 
+    // Scrub only after user actually scrolls — otherwise let it auto-loop.
     const tick = () => {
-      if (duration > 0 && video.readyState >= 2) {
+      const dur = video.duration;
+      if (targetTimeRef.current !== null && Number.isFinite(dur) && dur > 0 && video.readyState >= 2) {
         const current = video.currentTime;
         const next = current + (targetTimeRef.current - current) * 0.15;
         try {
-          video.currentTime = Math.min(Math.max(next, 0), duration - 0.05);
+          video.currentTime = Math.min(Math.max(next, 0), dur - 0.05);
         } catch {}
       }
       rafRef.current = requestAnimationFrame(tick);
     };
     rafRef.current = requestAnimationFrame(tick);
 
+    let hasScrolled = false;
     const onScroll = () => {
-      if (!duration) return;
+      const dur = video.duration;
+      if (!Number.isFinite(dur) || dur <= 0) return;
       const rect = wrap.getBoundingClientRect();
       const height = wrap.offsetHeight - window.innerHeight;
       const scrolled = Math.min(Math.max(-rect.top, 0), height);
       const progress = height > 0 ? scrolled / height : 0;
-      targetTimeRef.current = progress * duration;
+
+      // As soon as user is beyond the very top, take over from autoplay.
+      if (progress > 0.01) {
+        if (!hasScrolled) {
+          hasScrolled = true;
+          try {
+            video.pause();
+          } catch {}
+        }
+        targetTimeRef.current = progress * dur;
+      } else if (hasScrolled) {
+        // Back to top -> resume autoplay
+        hasScrolled = false;
+        targetTimeRef.current = null;
+        kick();
+      }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+
+    // Trigger a load in case autoplay didn't already
+    video.load();
 
     return () => {
-      video.removeEventListener('loadedmetadata', onMeta);
+      video.removeEventListener('canplay', onCanPlay);
       window.removeEventListener('scroll', onScroll);
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
     };
@@ -71,20 +86,22 @@ export function Hero({ dict }: { dict: Dictionary }) {
   return (
     <section ref={wrapperRef} className="relative h-[300vh] w-full">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Poster background (always visible until video is ready, then remains as fallback) */}
+        {/* Always-visible poster; video fades over it when ready */}
         <Image
           src={stock.poster}
           alt=""
           fill
           priority
           sizes="100vw"
-          className={`object-cover transition-opacity duration-700 ${videoReady ? 'opacity-0' : 'opacity-100'}`}
+          className="object-cover"
         />
         <video
           ref={videoRef}
-          className="hero-video"
+          className={`hero-video transition-opacity duration-1000 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
           src={HERO_VIDEO}
           muted
+          loop
+          autoPlay
           playsInline
           preload="auto"
           disableRemotePlayback
