@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Compass3D } from './Compass3D';
+import { LogoMark } from './LogoMark';
 import { stock, HERO_VIDEO } from '@/lib/media';
 import type { Dictionary } from '@/app/[lang]/dictionaries';
 
@@ -74,9 +74,9 @@ export function Hero({ dict }: { dict: Dictionary }) {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(11,10,8,0.7)_100%)]" />
         <div className="absolute inset-0 grain" />
 
-        {/* 3D compass */}
+        {/* Floating logo mark */}
         <div className="pointer-events-none absolute inset-0">
-          <Compass3D className="absolute top-[8%] end-[3%] hidden md:block w-[440px] h-[440px] opacity-90" />
+          <LogoMark className="absolute top-[8%] end-[3%] hidden md:block w-[440px] h-[440px]" size={360} />
         </div>
 
         {/* Watermark logo */}

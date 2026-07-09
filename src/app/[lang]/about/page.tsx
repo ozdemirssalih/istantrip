@@ -4,7 +4,7 @@ import { getDictionary, hasLocale, type Locale } from '../dictionaries';
 import { PageShell } from '@/components/PageShell';
 import { PageHero } from '@/components/PageHero';
 import { stock } from '@/lib/media';
-import { Compass3D } from '@/components/Compass3D';
+import { LogoMark } from '@/components/LogoMark';
 
 export default async function AboutPage({ params }: PageProps<'/[lang]/about'>) {
   const { lang } = await params;
@@ -16,7 +16,7 @@ export default async function AboutPage({ params }: PageProps<'/[lang]/about'>) 
       <section className="relative py-20 px-6">
         <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-14 items-center">
           <div className="relative h-[420px] hidden md:block">
-            <Compass3D className="absolute inset-0" />
+            <LogoMark className="absolute inset-0" size={360} />
           </div>
           <div>
             <h2 className="font-display text-3xl md:text-4xl text-cream mb-6">{dict.about.story.title}</h2>

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Compass3D } from './Compass3D';
+import { LogoMark } from './LogoMark';
 import type { Dictionary } from '@/app/[lang]/dictionaries';
 
 export function About({ dict }: { dict: Dictionary }) {
@@ -9,8 +9,7 @@ export function About({ dict }: { dict: Dictionary }) {
     <section id="about" className="relative py-32 px-6">
       <div className="mx-auto max-w-6xl grid md:grid-cols-2 gap-14 items-center">
         <div className="relative h-[420px] hidden md:block">
-          <Compass3D className="absolute inset-0" />
-          <div className="absolute inset-0 pointer-events-none bg-gradient-radial from-transparent to-[#0b0a08]" />
+          <LogoMark className="absolute inset-0" size={360} />
         </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
