@@ -2,128 +2,62 @@
 
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Compass3D } from './Compass3D';
-import { stock, HERO_VIDEO } from '@/lib/media';
+import { stock } from '@/lib/media';
 import type { Dictionary } from '@/app/[lang]/dictionaries';
 
 export function Hero({ dict }: { dict: Dictionary }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const rafRef = useRef<number | null>(null);
-  const targetTimeRef = useRef<number | null>(null);
-  const [videoReady, setVideoReady] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    const wrap = wrapperRef.current;
-    if (!video || !wrap) return;
+  const { scrollYProgress } = useScroll({
+    target: wrapperRef,
+    offset: ['start start', 'end start'],
+  });
 
-    // Attempt autoplay — muted so browsers allow it.
-    const kick = () => {
-      const p = video.play();
-      if (p && typeof p.then === 'function') p.catch(() => {});
-    };
-
-    const onCanPlay = () => {
-      setVideoReady(true);
-      kick();
-    };
-    video.addEventListener('canplay', onCanPlay);
-    video.addEventListener('loadeddata', () => setVideoReady(true));
-
-    // Scrub only after user actually scrolls — otherwise let it auto-loop.
-    const tick = () => {
-      const dur = video.duration;
-      if (targetTimeRef.current !== null && Number.isFinite(dur) && dur > 0 && video.readyState >= 2) {
-        const current = video.currentTime;
-        const next = current + (targetTimeRef.current - current) * 0.15;
-        try {
-          video.currentTime = Math.min(Math.max(next, 0), dur - 0.05);
-        } catch {}
-      }
-      rafRef.current = requestAnimationFrame(tick);
-    };
-    rafRef.current = requestAnimationFrame(tick);
-
-    let hasScrolled = false;
-    const onScroll = () => {
-      const dur = video.duration;
-      if (!Number.isFinite(dur) || dur <= 0) return;
-      const rect = wrap.getBoundingClientRect();
-      const height = wrap.offsetHeight - window.innerHeight;
-      const scrolled = Math.min(Math.max(-rect.top, 0), height);
-      const progress = height > 0 ? scrolled / height : 0;
-
-      // As soon as user is beyond the very top, take over from autoplay.
-      if (progress > 0.01) {
-        if (!hasScrolled) {
-          hasScrolled = true;
-          try {
-            video.pause();
-          } catch {}
-        }
-        targetTimeRef.current = progress * dur;
-      } else if (hasScrolled) {
-        // Back to top -> resume autoplay
-        hasScrolled = false;
-        targetTimeRef.current = null;
-        kick();
-      }
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    // Trigger a load in case autoplay didn't already
-    video.load();
-
-    return () => {
-      video.removeEventListener('canplay', onCanPlay);
-      window.removeEventListener('scroll', onScroll);
-      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
-    };
-  }, []);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.18]);
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
+  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
-    <section ref={wrapperRef} className="relative h-[300vh] w-full">
+    <section ref={wrapperRef} className="relative h-[180vh] w-full">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Always-visible poster; video fades over it when ready */}
-        <Image
-          src={stock.poster}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <video
-          ref={videoRef}
-          className={`hero-video transition-opacity duration-1000 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
-          src={HERO_VIDEO}
-          muted
-          loop
-          autoPlay
-          playsInline
-          preload="auto"
-          disableRemotePlayback
-          poster={stock.poster}
-        />
-        {/* Rich dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0b0a08]/70 via-[#0b0a08]/25 to-[#0b0a08]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(11,10,8,0.65)_100%)]" />
+        {/* High-quality Istanbul panorama — Süleymaniye Mosque + Golden Horn at sunset */}
+        <motion.div className="absolute inset-0" style={mounted ? { scale, y } : undefined}>
+          <Image
+            src={stock.hero.signature}
+            alt="Istanbul panorama"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+            quality={90}
+          />
+        </motion.div>
+
+        {/* Cinematic overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0b0a08]/60 via-transparent to-[#0b0a08]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(11,10,8,0.7)_100%)]" />
         <div className="absolute inset-0 grain" />
 
         {/* 3D compass floats top-right */}
         <div className="pointer-events-none absolute inset-0">
-          <Compass3D className="absolute top-[10%] end-[4%] hidden md:block w-[460px] h-[460px] opacity-95" />
+          <Compass3D className="absolute top-[8%] end-[3%] hidden md:block w-[440px] h-[440px] opacity-90" />
         </div>
 
         {/* Watermark logo bottom-left */}
-        <div className="pointer-events-none absolute bottom-[6%] start-[4%] hidden lg:block opacity-[0.06]">
-          <Image src="/logo.png" alt="" width={280} height={280} />
+        <div className="pointer-events-none absolute bottom-[6%] start-[3%] hidden lg:block opacity-[0.08]">
+          <Image src="/logo.png" alt="" width={300} height={300} />
         </div>
 
         {/* Content */}
-        <div className="relative z-10 flex h-full items-center">
+        <motion.div
+          className="relative z-10 flex h-full items-center"
+          style={mounted ? { y: contentY, opacity: contentOpacity } : undefined}
+        >
           <div className="mx-auto max-w-7xl w-full px-6">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -134,12 +68,12 @@ export function Hero({ dict }: { dict: Dictionary }) {
               <Image
                 src="/logo.png"
                 alt=""
-                width={56}
-                height={56}
-                className="drop-shadow-[0_0_20px_rgba(201,162,74,0.55)]"
+                width={60}
+                height={60}
+                className="drop-shadow-[0_0_24px_rgba(201,162,74,0.6)]"
               />
-              <span className="h-8 w-px bg-white/20" />
-              <p className="text-[color:var(--gold-soft)] tracking-[0.35em] uppercase text-xs">
+              <span className="h-9 w-px bg-white/20" />
+              <p className="text-[color:var(--gold-soft)] tracking-[0.4em] uppercase text-xs">
                 {dict.hero.eyebrow}
               </p>
             </motion.div>
@@ -148,7 +82,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.15 }}
-                className="font-display text-5xl sm:text-6xl md:text-7xl leading-[1.03] text-cream"
+                className="font-display text-5xl sm:text-6xl md:text-[5.5rem] leading-[1.02] text-cream"
               >
                 {dict.hero.title}
               </motion.h1>
@@ -156,7 +90,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.35 }}
-                className="mt-6 text-lg text-cream/85 max-w-xl"
+                className="mt-7 text-lg md:text-xl text-cream/90 max-w-xl leading-relaxed"
               >
                 {dict.hero.subtitle}
               </motion.p>
@@ -166,16 +100,16 @@ export function Hero({ dict }: { dict: Dictionary }) {
                 transition={{ duration: 0.9, delay: 0.55 }}
                 className="mt-10 flex items-center gap-4 flex-wrap"
               >
-                <a href="#reservation" className="btn-gold px-7 py-3.5 rounded-full text-sm">
+                <a href="#reservation" className="btn-gold px-8 py-4 rounded-full text-sm">
                   {dict.hero.cta}
                 </a>
-                <a href="#services" className="btn-ghost px-6 py-3.5 rounded-full text-sm">
+                <a href="#services" className="btn-ghost px-6 py-4 rounded-full text-sm">
                   {dict.nav.tours}
                 </a>
               </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 inset-x-0 flex flex-col items-center gap-2 z-10">

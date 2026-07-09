@@ -23,6 +23,7 @@ export const stock = {
     kadikoy: H('kadikoy'),
     yacht: H('bosphorus-yacht'),
     panorama: H('istanbul'),
+    signature: H('panorama'),
   },
   gallery: [
     H('hagia-sophia'),
@@ -42,7 +43,7 @@ export const stock = {
     hero: H('istanbul'),
     guide: H('sultanahmet'),
   },
-  poster: H('hagia-sophia'),
+  poster: H('panorama'),
 } as const;
 
 export const HERO_VIDEO = '/hero.mp4';
