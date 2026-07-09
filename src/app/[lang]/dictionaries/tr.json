@@ -19,9 +19,16 @@
     "cta": "Rezervasyon Yap",
     "scroll": "Kaydırın"
   },
+  "trust": {
+    "guests": "10.000+ Mutlu Misafir",
+    "guides": "Uzman Yerel Rehberler",
+    "vip": "VIP Karşılama",
+    "languages": "4 Dilde Hizmet"
+  },
   "services": {
     "sectionTitle": "Hizmetlerimiz",
     "sectionSubtitle": "İstanbul deneyiminizi tamamlayan dört ayrı hizmet.",
+    "learnMore": "Detay",
     "bosphorus": {
       "title": "Boğaz Turları",
       "desc": "Özel yatlarla gün batımı turları, klasik teknelerle Boğaz keşfi ve otantik köy duraklarıyla eşsiz manzaralar."
@@ -38,6 +45,46 @@
       "title": "Havalimanı Transfer & VIP",
       "desc": "Konforlu araçlar ve profesyonel şoförlerle sorunsuz karşılama ve şehir içi transfer."
     }
+  },
+  "tours": {
+    "sectionTitle": "Öne Çıkan Turlar",
+    "sectionSubtitle": "En sevilen deneyimlerimizden bir seçki.",
+    "listTitle": "Tüm Turlar",
+    "listSubtitle": "İstanbul'u keşfetmenin tam size uygun yolu.",
+    "durationLabel": "Süre",
+    "priceFrom": "başlangıç",
+    "hoursShort": "sa",
+    "highlights": "Öne Çıkanlar",
+    "book": "Bu Turu Rezerve Et",
+    "backToList": "← Tüm turlar",
+    "categoryAll": "Hepsi",
+    "categoryBosphorus": "Boğaz",
+    "categoryCity": "Şehir",
+    "categoryExperience": "Deneyim",
+    "categoryTransfer": "Transfer"
+  },
+  "hotels": {
+    "sectionTitle": "Seçkin Oteller",
+    "sectionSubtitle": "İstanbul'un en özel semtlerinde, sizin için ayırdığımız konaklama seçenekleri.",
+    "listTitle": "Oteller",
+    "listSubtitle": "Butik ve lüks — İstanbul'da sizin için hazırlanan konaklama.",
+    "priceFrom": "başlangıç",
+    "night": "gece",
+    "book": "Rezervasyon Talebi",
+    "amenitiesTitle": "Olanaklar",
+    "backToList": "← Tüm oteller",
+    "viewDetails": "Detayları gör"
+  },
+  "transfer": {
+    "sectionTitle": "Havalimanı Transfer & VIP",
+    "subtitle": "Uçaktan indiğiniz an başlayan konfor.",
+    "features": [
+      { "title": "VIP Karşılama", "desc": "İsim tabelası ile kapıda karşılama, bagaj yardımı." },
+      { "title": "Konforlu Araç", "desc": "Premium sedan ve minibüs seçenekleri, klimalı ve bakımlı." },
+      { "title": "Profesyonel Şoför", "desc": "Deneyimli, İngilizce bilen, güler yüzlü şoförler." },
+      { "title": "Sabit Fiyat", "desc": "Sürpriz yok, trafik yok — anlaşmalı fiyat garantisi." }
+    ],
+    "cta": "Transfer Ayarla"
   },
   "reservation": {
     "sectionTitle": "Rezervasyon",
@@ -69,18 +116,44 @@
       { "quote": "Balat sokaklarında geçirdiğimiz o öğleden sonrayı hiç unutmayacağız.", "author": "Yuki T." }
     ]
   },
+  "gallery": {
+    "sectionTitle": "İstanbul Anları",
+    "subtitle": "Misafirlerimizin ve rehberlerimizin objektifinden."
+  },
+  "faq": {
+    "sectionTitle": "Sıkça Sorulanlar",
+    "items": [
+      { "q": "Turları hangi dillerde alabiliyorum?", "a": "Türkçe, İngilizce, Arapça ve Rusça rehber seçeneklerimiz mevcuttur." },
+      { "q": "Ödeme nasıl yapılır?", "a": "Rezervasyonunuz onaylandıktan sonra kredi kartı, havale veya nakit ile ödeme yapabilirsiniz." },
+      { "q": "İptal politikası nedir?", "a": "Tur tarihinden 48 saat önce yapılan iptaller ücretsizdir." },
+      { "q": "Grup boyutu ne kadar olabilir?", "a": "Özel turlarımız 1-15 kişi arasında değişebilir. Daha büyük gruplar için özel plan hazırlarız." }
+    ]
+  },
   "about": {
     "sectionTitle": "Hakkımızda",
-    "body": "Istantrip, yerel tutkuyla küresel vizyonu buluşturur. Amacımız İstanbul'u yaşayan, hisseden ve anlatan turlar sunmak; tarihi dokusuyla, modern yüzüyle ve gizli güzellikleriyle şehri size açmaktır."
+    "body": "Istantrip, yerel tutkuyla küresel vizyonu buluşturur. Amacımız İstanbul'u yaşayan, hisseden ve anlatan turlar sunmak; tarihi dokusuyla, modern yüzüyle ve gizli güzellikleriyle şehri size açmaktır.",
+    "story": {
+      "title": "Hikâyemiz",
+      "body": "Doğduğumuz şehirle olan tutkulu ilişkimiz, Istantrip'in temelini oluşturuyor. Yerel rehberler, deneyimli operatörler ve tutkulu bir ekip olarak; misafirlerimize şehri sadece göstermiyor, hissettiriyoruz."
+    },
+    "values": [
+      { "title": "Yerellik", "desc": "Her rehberimiz şehrin gerçek nabzını tutar." },
+      { "title": "Detay", "desc": "Karşılamadan yolculuğa her adımda kürasyon." },
+      { "title": "Güven", "desc": "10.000+ misafirimizin bize duyduğu güven." }
+    ]
   },
   "contact": {
     "sectionTitle": "İletişim",
     "phone": "+90 552 228 26 82",
     "email": "info@istantrip.com",
-    "address": "İstanbul, Türkiye"
+    "address": "İstanbul, Türkiye",
+    "hours": "7 gün, 24 saat rezervasyon desteği"
   },
   "footer": {
     "tagline": "İstanbul'un ruhunu yaşayın.",
-    "rights": "Tüm hakları saklıdır."
+    "rights": "Tüm hakları saklıdır.",
+    "explore": "Keşfet",
+    "company": "Şirket",
+    "connect": "Bize Ulaş"
   }
 }

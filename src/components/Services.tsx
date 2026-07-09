@@ -1,15 +1,17 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Ship, Landmark, BedDouble, Car } from 'lucide-react';
+import { Ship, Landmark, BedDouble, Car, ArrowRight } from 'lucide-react';
 import type { Dictionary } from '@/app/[lang]/dictionaries';
 
-export function Services({ dict }: { dict: Dictionary }) {
+export function Services({ dict, locale }: { dict: Dictionary; locale: string }) {
+  const base = `/${locale}`;
   const items = [
-    { key: 'bosphorus', Icon: Ship, ...dict.services.bosphorus, id: 'services' },
-    { key: 'city', Icon: Landmark, ...dict.services.city, id: 'tours' },
-    { key: 'hotel', Icon: BedDouble, ...dict.services.hotel, id: 'hotels' },
-    { key: 'transfer', Icon: Car, ...dict.services.transfer, id: 'transfer' },
+    { key: 'bosphorus', Icon: Ship, ...dict.services.bosphorus, href: `${base}/tours?cat=bosphorus` },
+    { key: 'city', Icon: Landmark, ...dict.services.city, href: `${base}/tours?cat=city` },
+    { key: 'hotel', Icon: BedDouble, ...dict.services.hotel, href: `${base}/hotels` },
+    { key: 'transfer', Icon: Car, ...dict.services.transfer, href: `${base}/transfer` },
   ];
 
   return (
@@ -34,32 +36,36 @@ export function Services({ dict }: { dict: Dictionary }) {
           >
             {dict.services.sectionTitle}
           </motion.h2>
-          <p className="mt-4 text-cream/70 max-w-xl mx-auto">
-            {dict.services.sectionSubtitle}
-          </p>
+          <p className="mt-4 text-cream/70 max-w-xl mx-auto">{dict.services.sectionSubtitle}</p>
           <div className="divider-gold w-40 mx-auto mt-8" />
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {items.map(({ key, Icon, title, desc, id }, i) => (
-            <motion.article
+          {items.map(({ key, Icon, title, desc, href }, i) => (
+            <motion.div
               key={key}
-              id={id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, delay: i * 0.08 }}
-              className="card-glass rounded-2xl p-8 relative overflow-hidden group"
             >
-              <div className="absolute -top-16 -end-16 w-40 h-40 rounded-full bg-[color:var(--gold)]/10 blur-3xl group-hover:bg-[color:var(--gold)]/20 transition" />
-              <div className="relative">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-[color:var(--gold)]/25 to-[color:var(--gold-deep)]/10 border border-[color:var(--gold)]/30 mb-6">
-                  <Icon size={26} className="text-[color:var(--gold-soft)]" />
+              <Link
+                href={href}
+                className="card-glass rounded-2xl p-8 relative overflow-hidden group block h-full"
+              >
+                <div className="absolute -top-16 -end-16 w-40 h-40 rounded-full bg-[color:var(--gold)]/10 blur-3xl group-hover:bg-[color:var(--gold)]/25 transition" />
+                <div className="relative">
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-[color:var(--gold)]/25 to-[color:var(--gold-deep)]/10 border border-[color:var(--gold)]/30 mb-6">
+                    <Icon size={26} className="text-[color:var(--gold-soft)]" />
+                  </div>
+                  <h3 className="font-display text-2xl text-cream mb-3">{title}</h3>
+                  <p className="text-cream/70 text-sm leading-relaxed">{desc}</p>
+                  <span className="inline-flex items-center gap-2 mt-6 text-[color:var(--gold-soft)] text-sm">
+                    {dict.services.learnMore} <ArrowRight size={14} />
+                  </span>
                 </div>
-                <h3 className="font-display text-2xl text-cream mb-3">{title}</h3>
-                <p className="text-cream/70 text-sm leading-relaxed">{desc}</p>
-              </div>
-            </motion.article>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>

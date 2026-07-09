@@ -6,8 +6,21 @@ import type { Dictionary } from '@/app/[lang]/dictionaries';
 
 type State = 'idle' | 'loading' | 'success' | 'error';
 
-export function ReservationForm({ dict, locale }: { dict: Dictionary; locale: string }) {
+const VALID_SERVICES = ['bosphorus', 'city', 'hotel', 'transfer'] as const;
+
+export function ReservationForm({
+  dict,
+  locale,
+  preselectService,
+}: {
+  dict: Dictionary;
+  locale: string;
+  preselectService?: string;
+}) {
   const [state, setState] = useState<State>('idle');
+  const defaultService = (VALID_SERVICES as readonly string[]).includes(preselectService ?? '')
+    ? (preselectService as string)
+    : 'bosphorus';
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -77,7 +90,7 @@ export function ReservationForm({ dict, locale }: { dict: Dictionary; locale: st
           </label>
           <label className="text-sm">
             <span className="block mb-2 text-cream/80">{dict.reservation.fields.service}</span>
-            <select name="service" defaultValue="bosphorus">
+            <select name="service" defaultValue={defaultService}>
               <option value="bosphorus">{dict.reservation.serviceOptions.bosphorus}</option>
               <option value="city">{dict.reservation.serviceOptions.city}</option>
               <option value="hotel">{dict.reservation.serviceOptions.hotel}</option>

@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
+import { SESSION_COOKIE, verifySessionToken } from '@/lib/session';
 
 const locales = ['tr', 'en', 'ar', 'ru'] as const;
 const defaultLocale = 'tr';
@@ -23,6 +24,19 @@ function getLocale(request: NextRequest): string {
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // Guard admin routes (login page & logout excepted)
+  if (pathname.startsWith('/admin')) {
+    if (pathname === '/admin/login' || pathname === '/admin/logout') return;
+    const token = request.cookies.get(SESSION_COOKIE)?.value;
+    if (!verifySessionToken(token)) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/admin/login';
+      url.search = '';
+      return NextResponse.redirect(url);
+    }
+    return;
+  }
 
   const hasLocale = locales.some(
     (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)

@@ -19,9 +19,16 @@
     "cta": "Make a Reservation",
     "scroll": "Scroll"
   },
+  "trust": {
+    "guests": "10,000+ Happy Guests",
+    "guides": "Expert Local Guides",
+    "vip": "VIP Meet & Greet",
+    "languages": "4 Languages"
+  },
   "services": {
     "sectionTitle": "Our Services",
     "sectionSubtitle": "Four services designed to complete your Istanbul journey.",
+    "learnMore": "Details",
     "bosphorus": {
       "title": "Bosphorus Cruises",
       "desc": "Sunset cruises on private yachts, classic boat rides along the strait, and authentic village stops with unmatched views."
@@ -38,6 +45,46 @@
       "title": "Airport Transfer & VIP",
       "desc": "Seamless meet-and-greet and in-city transfers with comfortable vehicles and professional drivers."
     }
+  },
+  "tours": {
+    "sectionTitle": "Featured Tours",
+    "sectionSubtitle": "A selection of our most-loved experiences.",
+    "listTitle": "All Tours",
+    "listSubtitle": "The right way for you to explore Istanbul.",
+    "durationLabel": "Duration",
+    "priceFrom": "from",
+    "hoursShort": "h",
+    "highlights": "Highlights",
+    "book": "Book this Tour",
+    "backToList": "← All tours",
+    "categoryAll": "All",
+    "categoryBosphorus": "Bosphorus",
+    "categoryCity": "City",
+    "categoryExperience": "Experience",
+    "categoryTransfer": "Transfer"
+  },
+  "hotels": {
+    "sectionTitle": "Selected Hotels",
+    "sectionSubtitle": "Stays we've curated in Istanbul's most special districts.",
+    "listTitle": "Hotels",
+    "listSubtitle": "Boutique and luxury — accommodation prepared for you in Istanbul.",
+    "priceFrom": "from",
+    "night": "night",
+    "book": "Request a Booking",
+    "amenitiesTitle": "Amenities",
+    "backToList": "← All hotels",
+    "viewDetails": "View details"
+  },
+  "transfer": {
+    "sectionTitle": "Airport Transfer & VIP",
+    "subtitle": "Comfort that begins the moment you land.",
+    "features": [
+      { "title": "VIP Meet & Greet", "desc": "Name-board welcome at the gate, luggage assistance." },
+      { "title": "Premium Vehicle", "desc": "Sedans and vans, air-conditioned and immaculately kept." },
+      { "title": "Professional Driver", "desc": "Experienced, English-speaking, friendly drivers." },
+      { "title": "Fixed Price", "desc": "No surprises, no traffic tariffs — a guaranteed rate." }
+    ],
+    "cta": "Arrange Transfer"
   },
   "reservation": {
     "sectionTitle": "Reservation",
@@ -69,18 +116,44 @@
       { "quote": "We'll never forget that afternoon walking through the streets of Balat.", "author": "Yuki T." }
     ]
   },
+  "gallery": {
+    "sectionTitle": "Istanbul Moments",
+    "subtitle": "Through the lens of our guests and guides."
+  },
+  "faq": {
+    "sectionTitle": "Frequently Asked",
+    "items": [
+      { "q": "What languages are the tours in?", "a": "We offer guides in Turkish, English, Arabic and Russian." },
+      { "q": "How do I pay?", "a": "Once your reservation is confirmed you can pay by credit card, transfer or cash." },
+      { "q": "What is the cancellation policy?", "a": "Cancellations more than 48 hours before the tour are free." },
+      { "q": "What is the group size?", "a": "Our private tours run 1–15 guests. For larger groups we build a custom plan." }
+    ]
+  },
   "about": {
     "sectionTitle": "About",
-    "body": "Istantrip connects local passion with global vision. We craft tours that live, feel and tell Istanbul's story — opening the city's historical texture, modern face and hidden beauty to you."
+    "body": "Istantrip connects local passion with global vision. We craft tours that live, feel and tell Istanbul's story — opening the city's historical texture, modern face and hidden beauty to you.",
+    "story": {
+      "title": "Our Story",
+      "body": "Our passionate bond with the city we were born in is the foundation of Istantrip. As local guides, experienced operators and a passionate team, we don't just show the city — we let you feel it."
+    },
+    "values": [
+      { "title": "Local", "desc": "Every guide keeps the city's real pulse." },
+      { "title": "Detail", "desc": "Curation at every step, from welcome to farewell." },
+      { "title": "Trust", "desc": "10,000+ guests have trusted us." }
+    ]
   },
   "contact": {
     "sectionTitle": "Contact",
     "phone": "+90 552 228 26 82",
     "email": "info@istantrip.com",
-    "address": "Istanbul, Türkiye"
+    "address": "Istanbul, Türkiye",
+    "hours": "24/7 reservation support"
   },
   "footer": {
     "tagline": "Live the soul of Istanbul.",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "explore": "Explore",
+    "company": "Company",
+    "connect": "Connect"
   }
 }
