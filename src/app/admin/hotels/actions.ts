@@ -14,6 +14,15 @@ function slugify(v: string) {
     .slice(0, 80);
 }
 
+function parseGallery(raw: string): string[] {
+  try {
+    const v = JSON.parse(raw);
+    return Array.isArray(v) ? v.filter((s) => typeof s === 'string' && s) : [];
+  } catch {
+    return [];
+  }
+}
+
 function toPayload(fd: FormData) {
   const name = String(fd.get('name') ?? '').trim();
   const slugRaw = String(fd.get('slug') ?? '').trim();
@@ -21,6 +30,7 @@ function toPayload(fd: FormData) {
   const priceRaw = String(fd.get('price_from') ?? '').trim();
   const starsRaw = String(fd.get('stars') ?? '').trim();
   const sortRaw = String(fd.get('sort_order') ?? '').trim();
+  const galleryRaw = String(fd.get('gallery') ?? '[]');
   return {
     slug: slugRaw ? slugify(slugRaw) : slugify(name),
     name,
@@ -37,6 +47,7 @@ function toPayload(fd: FormData) {
     amenities: amenitiesRaw
       ? amenitiesRaw.split(',').map((s) => s.trim()).filter(Boolean)
       : [],
+    gallery: parseGallery(galleryRaw),
     published: fd.get('published') === 'on',
     sort_order: sortRaw ? Number(sortRaw) : 0,
     updated_at: new Date().toISOString(),

@@ -23,6 +23,15 @@ function csv(v: string): string[] {
     .filter(Boolean);
 }
 
+function parseJsonArray(raw: string): string[] {
+  try {
+    const v = JSON.parse(raw);
+    return Array.isArray(v) ? v.filter((s) => typeof s === 'string' && s) : [];
+  } catch {
+    return [];
+  }
+}
+
 function toPayload(fd: FormData) {
   const name_en = String(fd.get('name_en') ?? '').trim();
   const slugRaw = String(fd.get('slug') ?? '').trim();
@@ -38,7 +47,7 @@ function toPayload(fd: FormData) {
     price_from: fd.get('price_from') ? Number(fd.get('price_from')) : null,
     currency: String(fd.get('currency') ?? 'EUR') || 'EUR',
     cover_url: String(fd.get('cover_url') ?? '') || null,
-    gallery: csv(String(fd.get('gallery') ?? '')),
+    gallery: parseJsonArray(String(fd.get('gallery') ?? '[]')),
     highlights_tr: csv(String(fd.get('highlights_tr') ?? '')),
     highlights_en: csv(String(fd.get('highlights_en') ?? '')),
     highlights_ar: csv(String(fd.get('highlights_ar') ?? '')),

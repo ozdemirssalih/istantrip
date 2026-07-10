@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ImageUpload } from '../_components/ImageUpload';
+import { MultiImageUpload } from '../_components/MultiImageUpload';
 
 type Tour = {
   id?: string;
@@ -26,7 +27,6 @@ type Tour = {
   sort_order?: number | null;
 };
 
-const joinLines = (v?: string[] | null) => (v ?? []).join('\n');
 const joinCsv = (v?: string[] | null) => (v ?? []).join(', ');
 
 export function TourForm({
@@ -102,10 +102,14 @@ export function TourForm({
         />
       </div>
 
-      <label className="text-sm md:col-span-2">
-        <span className="block mb-2 text-cream/80">Gallery URLs (comma-separated or new lines)</span>
-        <textarea name="gallery" rows={3} defaultValue={joinLines(tour?.gallery)} placeholder="https://... , https://..." />
-      </label>
+      <div className="md:col-span-2">
+        <MultiImageUpload
+          name="gallery"
+          defaultValue={tour?.gallery ?? []}
+          scope="tours"
+          label="Gallery (multiple photos — upload files or paste URLs, drag to reorder)"
+        />
+      </div>
 
       <label className="text-sm md:col-span-2">
         <span className="block mb-2 text-cream/80">Highlights — Türkçe (comma-separated)</span>

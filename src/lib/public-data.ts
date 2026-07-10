@@ -17,6 +17,7 @@ export type Hotel = {
   description_ar: string | null;
   description_ru: string | null;
   amenities: string[] | null;
+  gallery: string[] | null;
   published: boolean;
   sort_order: number | null;
 };

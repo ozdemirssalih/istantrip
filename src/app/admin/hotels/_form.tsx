@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ImageUpload } from '../_components/ImageUpload';
+import { MultiImageUpload } from '../_components/MultiImageUpload';
 
 type Hotel = {
   id?: string;
@@ -16,6 +17,7 @@ type Hotel = {
   description_ar?: string | null;
   description_ru?: string | null;
   amenities?: string[] | null;
+  gallery?: string[] | null;
   published?: boolean;
   sort_order?: number | null;
 };
@@ -73,6 +75,14 @@ export function HotelForm({
         <span className="block mb-2 text-cream/80">Booking URL (optional)</span>
         <input name="booking_url" defaultValue={hotel?.booking_url ?? ''} />
       </label>
+      <div className="md:col-span-2">
+        <MultiImageUpload
+          name="gallery"
+          defaultValue={hotel?.gallery ?? []}
+          scope="hotels"
+          label="Gallery (multiple photos — upload files or paste URLs, drag to reorder)"
+        />
+      </div>
       <label className="text-sm md:col-span-2">
         <span className="block mb-2 text-cream/80">Amenities (comma-separated)</span>
         <input name="amenities" defaultValue={amenitiesStr} placeholder="Terrace, Breakfast, Spa" />

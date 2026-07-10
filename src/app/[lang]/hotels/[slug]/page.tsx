@@ -68,6 +68,15 @@ export default async function HotelDetailPage({ params }: PageProps<'/[lang]/hot
                 </ul>
               </div>
             )}
+            {h.gallery && h.gallery.length > 0 && (
+              <div className="mt-14 grid grid-cols-2 md:grid-cols-3 gap-3">
+                {h.gallery.map((g, i) => (
+                  <div key={i} className="relative aspect-square rounded-xl overflow-hidden">
+                    <Image src={g} alt="" fill sizes="(max-width: 768px) 50vw, 33vw" className="object-cover" />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           <aside className="md:sticky md:top-28 h-fit card-glass rounded-2xl p-6">
             <div className="text-xs uppercase tracking-widest text-[color:var(--gold-soft)] mb-3">
